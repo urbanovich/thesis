@@ -12,6 +12,6 @@ func NewApi(name string) *Api {
 	}
 }
 
-func (a *Api) run() {
+func (a *Api) Run() {
 	fmt.Println(a.name)
 }
