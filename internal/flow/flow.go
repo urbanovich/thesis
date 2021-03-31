@@ -1,7 +1,5 @@
 package flow
 
-import "fmt"
-
-func MainFlow(str string) {
-	fmt.Println(str)
+func MainFlow(str string) string {
+	return str + " 123!"
 }
