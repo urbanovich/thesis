@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\EventsController;
+
 // --------------------------
 // Custom Backpack Routes
 // --------------------------
@@ -14,4 +16,9 @@ Route::group([
     ),
     'namespace'  => 'App\Http\Controllers\Admin',
 ], function () { // custom admin routes
+    // -----
+    // CRUDs
+    // -----
+    Route::crud('events', 'EventsController');
+    Route::crud('flows', 'FlowsController');
 }); // this should be the absolute last line of this file
