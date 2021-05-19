@@ -20,8 +20,9 @@ class Flows extends Model
      */
     protected $table = 'flows';
 
-    /**
-     * @var string[]
-     */
-    protected $fillable = ['name', 'settings'];
+    protected $guarded = ['id'];
+
+    protected $casts = [
+        'extras' => 'array',
+    ];
 }
