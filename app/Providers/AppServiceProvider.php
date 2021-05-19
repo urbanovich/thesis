@@ -4,8 +4,10 @@ namespace App\Providers;
 
 use App\Models\Events;
 use App\Models\Flows;
+use App\Models\Templates;
 use App\Observers\EventsObserver;
 use App\Observers\FlowsObserver;
+use App\Observers\TemplatesObserver;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -29,5 +31,6 @@ class AppServiceProvider extends ServiceProvider
     {
         Events::observe(EventsObserver::class);
         Flows::observe(FlowsObserver::class);
+        Templates::observe(TemplatesObserver::class);
     }
 }

@@ -25,4 +25,14 @@ class Flows extends Model
     protected $casts = [
         'extras' => 'array',
     ];
+
+    public function events()
+    {
+        return $this->belongsToMany(\App\Models\Events::class, 'flow_event', 'flow_id', 'event_id');
+    }
+
+    public function templates()
+    {
+        return $this->belongsToMany(\App\Models\Templates::class, 'flow_template', 'flow_id', 'template_id');
+    }
 }

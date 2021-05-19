@@ -51,6 +51,8 @@ class FlowsController extends CrudController
             ]
         );
 
+        $this->crud->orderFields(['name']);
+
         $this->crud->enableExportButtons();
     }
 
@@ -61,25 +63,67 @@ class FlowsController extends CrudController
 
         CRUD::addField('name');
 
+
         CRUD::addField(
             [
-                'name' => 'task',
+                'name' => 'flow',
                 'label' => 'Task',
                 'type' => 'repeatable',
                 'fake' => true,
                 'store_in' => 'extras',
                 'fields' => [
+                    [    // SELECT
+                        'label'             => 'Event',
+                        'type'              => 'select',
+                        'name'              => 'event',
+                        'entity'            => 'events',
+                        'attribute'         => 'name',
+                        'model'             => "App\Models\Events",
+                        'wrapperAttributes' => [
+                            'class' => 'form-group col-md-7'
+                        ],
+                    ],
                     [   // select_from_array
-                        'name' => 'select_from_array',
-                        'label' => 'Select_from_array',
+                        'name' => 'wait',
+                        'label' => 'Wait(hours)',
                         'type' => 'select_from_array',
-                        'options' => ['one' => 'One', 'two' => 'Two', 'three' => 'Three'],
+                        'options' => [
+                            '1' => '1',
+                            '2' => '2',
+                            '3' => '3',
+                            '6' => '6',
+                            '9' => '9',
+                            '12' => '12',
+                            '24' => '24',
+                            '48' => '48',
+                            '72' => '72',
+                        ],
+                        'wrapperAttributes' => [
+                            'class' => 'form-group col-md-7'
+                        ],
+                    ],
+                    [    // SELECT
+                        'label'             => 'Template',
+                        'type'              => 'select',
+                        'name'              => 'template',
+                        'entity'            => 'templates',
+                        'attribute'         => 'name',
+                        'model'             => "App\Models\Templates",
+                        'wrapperAttributes' => [
+                            'class' => 'form-group col-md-7'
+                        ],
                     ],
                     [
-                        'name' => 'radio',
-                        'label' => 'Radio',
-                        'type' => 'radio',
-                        'options' => [0 => 'Draft', 1 => 'Published', 2 => 'Other'],
+                        'name'    => 'radio', // the name of the db column
+                        'label'   => 'Status (radio)', // the input label
+                        'type'    => 'radio',
+                        'options' => [ // the key will be stored in the db, the value will be shown as label;
+                            0 => 'Draft',
+                            1 => 'Published',
+                            2 => 'Other',
+                        ],
+                        // optional
+                        'inline' => true, // show the radios all on the same line?
                     ],
                 ],
             ]

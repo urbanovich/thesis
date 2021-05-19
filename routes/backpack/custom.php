@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\Admin\EventsController;
-
 // --------------------------
 // Custom Backpack Routes
 // --------------------------
@@ -21,4 +19,8 @@ Route::group([
     // -----
     Route::crud('events', 'EventsController');
     Route::crud('flows', 'FlowsController');
+    Route::crud('templates', 'TemplatesController');
 }); // this should be the absolute last line of this file
+/** CATCH-ALL ROUTE for Backpack/PageManager - needs to be at the end of your routes.php file  **/
+Route::get('{page}/{subs?}', ['uses' => '\App\Http\Controllers\Frontend\PageController@index'])
+    ->where(['page' => '^(((?=(?!admin))(?=(?!\/)).))*$', 'subs' => '.*']);
