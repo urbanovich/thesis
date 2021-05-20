@@ -1,62 +1,61 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+##Дипломная работа по теме: «Программное средство поддержки процесса принятия решений по стимулированию продаж в Internet-торговле»
+```
+1.Тема проекта «Программное средство поддержки процесса принятия решений по стимулированию продаж в Internet-торговле» утверждена приказом по университету от 15.02.2021 № 371-с.
+2.Срок сдачи студентом законченного проекта 11.06.2021.
+3.Исходные данные к проекту
+    3.1.Назначение программного средства–поддержка процесса принятия решений по стимулированию продаж в Internet-торговле.
+    3.2.Требования к программному средству.
+        3.2.1.Реализовать программное средство с использованием объектно-ориентированного языка программирования PHP. 
+        3.2.2.Структура программного средства должна иметь классическую трехслойную архитектуру, включающую презентационную логику, бизнес-логику, слой доступа к данным. 
+        3.2.3.Реализацию абстрактного уровня доступа к данным осуществить на основе объектно-ориентированного языка программирования PHP 8.0.2 и пакета Docker 20.10, для реализации основной архитектуры использовать фреймворк Laravel 8.0, микросервисную архитектуру выполнить на языке Go. 
+        3.2.4.Для прозрачной передачи данных клиентам использовать протоколы TCP/IP, HTTP/HTTPS, для взаимодействия компонентов распределённого приложения – REST API. 
+        3.2.5. При разработке пользовательского интерфейса использовать язык гипертестовой разметки HTML, каскадную таблицу стилей CSS, метаязык SASS, программирование клиентской части выполнить с помощью языка программирования JavaScript (ESMA6), сборщика Webpack 5.33.2, библиотеки React 17.0.2. 
+        3.2.6. Взаимодействие между серверной и клиентскими частями должно осуществляться с использованием протокола HTTP/HTTPS.
+    3.3.Требования к поставке.
+        3.3.1.Исполняемые файлы должны работать в среде любой операционной системы.
+        3.3.2.Используемая система управления базой данных–MySQL 8.0. 
+        3.3.3.Язык интерфейса и элементов управления–русский. 
+        3.3.4.Программное средство должно запускаться без использования интегрированных средств разработки (Docker).
+    3.4.Специальные технические требования: проектирование программного средства выполнять с учетом положений, изложенных в руководящем документе IDEF0, в стандартах IDEF1X, BPMN 2.0, UML 2.0 и выше.
+4.Содержание расчетно-пояснительной записки (перечень подлежащих разработке вопросов)
+Титульный лист. Реферат. Задание. Содержание. Перечень условных обозначений, символов и терминов.
+Введение.
+    4.1.Анализ литературных исследований и программных решений. 
+        4.1.1.Анализ методов стимулирования продаж с помощью email рассылки.
+        4.1.2.Сравнительный обзор аналогов программного средства.
+    4.2.Моделирование предметной области и разработка требований к программному средству. 
+        4.2.1.Анализ и формализация бизнес-процессов предметной области. 
+        4.2.2.Анализ требований к разрабатываемому программному средству. Спецификация функциональных требований. 
+        4.2.3.Информационная модель и ее описание. 
+        4.2.4.Модели представления программного средства. 
+        4.2.5.Постановка задачи.
+    4.3.Проектирование программного средства поддержки процесса принятия решений по стимулированию продаж в Internet-торговле. 
+        4.3.1.Архитектурные решения. 
+        4.3.2.Описание алгоритмов, реализующих бизнес-логику разрабатываемого программного средства. 
+        4.3.3.Проектирование пользовательского интерфейса.
+    4.4.Разработка программного средства поддержки процесса принятия решений по стимулированию продаж в Internet-торговле. 
+        4.4.1.Обоснование выбора компонентов и технологий для реализации дипломного проекта. 
+        4.4.2.Программная реализация алгоритмов, реализующих бизнес-логику программного средства. 
+        4.4.3.Тестирование и проверка работоспособности программного средства. 
+        4.4.4.Руководство по развертыванию и использованию программного средства.
+    4.5.Технико-экономическое обоснование эффективности разработки и реализации программного средства поддержки процесса принятия решений по стимулированию продаж в Internet-торговле. 
+        4.5.1.Характеристика программного средства. 
+        4.5.2.Расчет сметы затрат и отпускной цены. 
+        4.5.3.Расчет экономического эффекта от реализации программного средства. 
+        4.5.4.Расчет показателей эффективности разработки и реализации программного средства.
+Заключение. Список использованных источников.
+Приложения (обязательные): отчет о проверке на заимствования в системе «Антиплагиат»; листинг кода алгоритмов, реализующих бизнес-логику; листинг скрипта генерации базы данных.
+Ведомость документов дипломного проекта.
+5.Перечень графического материала (с точным указанием обязательных чертежей)
+    5.1.IDEF0-модель процессов предметной области (чертеж, 1 лист формата А1).
+    5.2.Схема общего алгоритма работы программного средства (чертеж, 1 лист форматаА1).
+    5.3.Плакаты, отражающие результаты проектирования программного средства (4листа формата А1):
+        5.3.1.UML диаграмма классов (плакат, 1 лист формата А1).
+        5.3.2.ER-диаграмма (плакат, 1 лист формата А1).
+        5.3.3.Модели представления программного средства (плакат, 1 лист формата А1).
+        5.3.4.Скриншоты рабочих окон программного средства (плакат, 1 лист формата А1).
+6.Содержание задания по технико-экономическому обоснованию
+Технико-экономическое обоснование разработки и реализации программного средства поддержки процесса принятия решений по стимулированию продаж в Internet-торговле.
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
-
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```
