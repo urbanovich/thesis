@@ -6,16 +6,16 @@
 </li><li class="nav-item"><a class="nav-link" href="{{ backpack_url('flows') }}"><i
             class="la la-flag-o nav-icon"></i> {{ trans('admin.flows') }}</a></li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('lists') }}'>
-        <i class='nav-icon la la-newspaper'></i> Lists</a></li>
+        <i class='nav-icon la la-newspaper'></i> {{ trans('admin.lists') }}</a></li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('customers') }}'>
-        <i class='nav-icon la la-user'></i> Customers</a></li>
+        <i class='nav-icon la la-user'></i> {{ trans('admin.customers') }}</a></li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('companies') }}'>
-        <i class='nav-icon la la-compress'></i> Companies</a></li>
+        <i class='nav-icon la la-compress'></i> {{ trans('admin.companies') }}</a></li>
 
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('page') }}'>
-        <i class='nav-icon la la-file-o'></i> <span>Pages</span></a></li>
+        <i class='nav-icon la la-file-o'></i> <span> {{ trans('admin.pages') }}</span></a></li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('templates') }}'>
-        <i class='nav-icon la la-pager'></i> Templates</a></li>
+        <i class='nav-icon la la-pager'></i> {{ trans('admin.templates') }}</a></li>
 
 <li class="nav-item nav-dropdown">
     <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon la la-globe"></i> Translations</a>
@@ -27,4 +27,4 @@
     </ul>
 </li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('setting') }}'>
-        <i class='nav-icon la la-cog'></i> <span>Settings</span></a></li>
+        <i class='nav-icon la la-cog'></i> <span> {{ trans('admin.settings') }}</span></a></li>
