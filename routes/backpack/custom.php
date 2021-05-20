@@ -14,6 +14,15 @@ Route::group([
     ),
     'namespace'  => 'App\Http\Controllers\Admin',
 ], function () { // custom admin routes
+
+    $locale = \App::currentLocale();
+
+    \App::setLocale('ru');
+
+    if (\App::isLocale('ru')) {
+        \App::setLocale('ru');
+    }
+
     // -----
     // CRUDs
     // -----

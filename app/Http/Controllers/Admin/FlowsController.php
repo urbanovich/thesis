@@ -114,14 +114,27 @@ class FlowsController extends CrudController
                         ],
                     ],
                     [
-                        'name'    => 'radio', // the name of the db column
-                        'label'   => 'Status (radio)', // the input label
+                        'name'    => 'logic', // the name of the db column
+                        'label'   => 'Logic', // the input label
                         'type'    => 'radio',
                         'options' => [ // the key will be stored in the db, the value will be shown as label;
-                            0 => 'Draft',
-                            1 => 'Published',
-                            2 => 'Other',
+                            'and' => 'AND',
+                            'or' => 'OR',
                         ],
+//                        'attributes' => ['readonly' => 'readonly'],
+                        // optional
+                        'inline' => true, // show the radios all on the same line?
+                    ],
+                    [
+                        'name'    => 'task_status', // the name of the db column
+                        'label'   => 'Task Status', // the input label
+                        'type'    => 'radio',
+                        'options' => [ // the key will be stored in the db, the value will be shown as label;
+                            'event' => 'Event',
+                            'logic' => 'Logic',
+                            'email' => 'Email',
+                        ],
+//                        'attributes' => ['readonly' => 'readonly'],
                         // optional
                         'inline' => true, // show the radios all on the same line?
                     ],
