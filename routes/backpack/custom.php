@@ -20,7 +20,14 @@ Route::group([
     Route::crud('events', 'EventsController');
     Route::crud('flows', 'FlowsController');
     Route::crud('templates', 'TemplatesController');
+    Route::crud('lists', 'ListsCrudController');
+    Route::crud('customers', 'CustomersCrudController');
+    Route::crud('companies', 'CompaniesCrudController');
 }); // this should be the absolute last line of this file
+
+
+
+
 /** CATCH-ALL ROUTE for Backpack/PageManager - needs to be at the end of your routes.php file  **/
-Route::get('{page}/{subs?}', ['uses' => '\App\Http\Controllers\Frontend\PageController@index'])
+Route::get('{page}/{subs?}', ['uses' => '\App\Http\Controllers\PageController@index'])
     ->where(['page' => '^(((?=(?!admin))(?=(?!\/)).))*$', 'subs' => '.*']);
