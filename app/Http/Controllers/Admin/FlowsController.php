@@ -83,7 +83,7 @@ class FlowsController extends CrudController
                         'name'              => 'event',
                         'entity'            => 'events',
                         'attribute'         => 'name',
-                        'model'             => "App\Models\Events",
+                        'model'             => "App\Models\EventTypes",
                         'wrapperAttributes' => [
                             'class' => 'form-group col-md-7'
                         ],

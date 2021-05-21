@@ -33,7 +33,7 @@ class EventsController extends CrudController
     {
         $this->crud->setModel(Events::class);
         $this->crud->setRoute(config('backpack.base.route_prefix').'/events');
-        $this->crud->setEntityNameStrings('event', 'events');
+        $this->crud->setEntityNameStrings(trans('admin.event'), trans('admin.events'));
     }
 
     /**
@@ -43,7 +43,7 @@ class EventsController extends CrudController
     {
         $this->crud->addColumn([
             'name' => 'name', // The db column name
-            'label' => "Event Name", // Table column heading
+            'label' => trans('admin.title'), // Table column heading
             'type' => 'text'
         ]);
 
@@ -55,8 +55,10 @@ class EventsController extends CrudController
         $this->crud->setValidation(EventsRequest::class);
         $this->crud->setOperationSetting('contentClass', 'col-md-12');
 
-        CRUD::addField('name');
-        CRUD::addField('data');
+        CRUD::addField([
+            'name' => 'name',
+            'label' => trans('admin.title'),
+       ]);
     }
 
     protected function setupUpdateOperation()

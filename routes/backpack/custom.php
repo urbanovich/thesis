@@ -26,14 +26,14 @@ Route::group([
     // -----
     // CRUDs
     // -----
-    Route::crud('events', 'EventsController');
+//    Route::crud('events', 'EventsController');
     Route::crud('flows', 'FlowsController');
     Route::crud('templates', 'TemplatesController');
     Route::crud('lists', 'ListsCrudController');
     Route::crud('customers', 'CustomersCrudController');
     Route::crud('companies', 'CompaniesCrudController');
+    Route::crud('event_types', 'EventTypesCrudController');
 }); // this should be the absolute last line of this file
-
 
 
 
