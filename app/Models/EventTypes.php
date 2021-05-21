@@ -9,7 +9,12 @@ use Illuminate\Database\Eloquent\Model;
  * Class EventTypes
  * @package App\Models
  *
- * @property $company_id
+ * @property int $id
+ * @property int $company_id
+ * @property string $name
+ * @property bool $is_deleted
+ * @property string $created_at
+ * @property string $updated_at
  */
 class EventTypes extends Model
 {

@@ -9,6 +9,14 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Class Flows
  * @package App\Models
+ *
+ * @property int $id
+ * @property int $company_id
+ * @property string $name
+ * @property json $extras
+ * @property bool $is_deleted
+ * @property string $created_at
+ * @property string $updated_at
  */
 class Flows extends Model
 {

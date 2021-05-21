@@ -5,6 +5,19 @@ namespace App\Models;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Customers
+ * @package App\Models
+ *
+ * @property int $id
+ * @property int $company_id
+ * @property string $first_name
+ * @property string $last_name
+ * @property string $email
+ * @property bool $is_deleted
+ * @property string $created_at
+ * @property string $updated_at
+ */
 class Customers extends Model
 {
     use CrudTrait;
