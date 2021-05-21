@@ -35,7 +35,10 @@ class FlowsController extends CrudController
     {
         $this->crud->setModel(Flows::class);
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/flows');
-        $this->crud->setEntityNameStrings('flow', 'flows');
+        $this->crud->setEntityNameStrings(
+            trans('admin.add_flow'),
+            trans('admin.flows')
+        );
     }
 
     /**
@@ -46,7 +49,7 @@ class FlowsController extends CrudController
         $this->crud->addColumn(
             [
                 'name' => 'name', // The db column name
-                'label' => "Flow Name", // Table column heading
+                'label' => trans('admin.title'), // Table column heading
                 'type' => 'text'
             ]
         );
@@ -61,19 +64,21 @@ class FlowsController extends CrudController
         $this->crud->setValidation(FlowsRequest::class);
         $this->crud->setOperationSetting('contentClass', 'col-md-12');
 
-        CRUD::addField('name');
-
+        CRUD::addField([
+            'name' => 'name',
+            'label' => trans('admin.title'),
+       ]);
 
         CRUD::addField(
             [
                 'name' => 'flow',
-                'label' => 'Task',
+                'label' => trans('admin.task'),
                 'type' => 'repeatable',
                 'fake' => true,
                 'store_in' => 'extras',
                 'fields' => [
                     [    // SELECT
-                        'label'             => 'Event',
+                        'label'             => trans('admin.event'),
                         'type'              => 'select',
                         'name'              => 'event',
                         'entity'            => 'events',
@@ -85,7 +90,7 @@ class FlowsController extends CrudController
                     ],
                     [   // select_from_array
                         'name' => 'wait',
-                        'label' => 'Wait(hours)',
+                        'label' => trans('admin.wait'),
                         'type' => 'select_from_array',
                         'options' => [
                             '1' => '1',
@@ -103,7 +108,7 @@ class FlowsController extends CrudController
                         ],
                     ],
                     [    // SELECT
-                        'label'             => 'Template',
+                        'label'             => trans('admin.template'),
                         'type'              => 'select',
                         'name'              => 'template',
                         'entity'            => 'templates',
@@ -115,26 +120,24 @@ class FlowsController extends CrudController
                     ],
                     [
                         'name'    => 'logic', // the name of the db column
-                        'label'   => 'Logic', // the input label
+                        'label'   => trans('admin.use_logic'), // the input label
                         'type'    => 'radio',
                         'options' => [ // the key will be stored in the db, the value will be shown as label;
                             'and' => 'AND',
                             'or' => 'OR',
                         ],
-//                        'attributes' => ['readonly' => 'readonly'],
                         // optional
                         'inline' => true, // show the radios all on the same line?
                     ],
                     [
                         'name'    => 'task_status', // the name of the db column
-                        'label'   => 'Task Status', // the input label
+                        'label'   => trans('admin.task_status'), // the input label
                         'type'    => 'radio',
                         'options' => [ // the key will be stored in the db, the value will be shown as label;
-                            'event' => 'Event',
-                            'logic' => 'Logic',
-                            'email' => 'Email',
+                            'event' => trans('admin.event'),
+                            'logic' => trans('admin.logically'),
+                            'email' => trans('admin.email'),
                         ],
-//                        'attributes' => ['readonly' => 'readonly'],
                         // optional
                         'inline' => true, // show the radios all on the same line?
                     ],
