@@ -21,36 +21,43 @@ class ListsCrudController extends CrudController
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
-     * 
+     *
      * @return void
      */
     public function setup()
     {
         CRUD::setModel(\App\Models\Lists::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/lists');
-        CRUD::setEntityNameStrings('lists', 'lists');
+        CRUD::setEntityNameStrings(trans('admin.create_list'), trans('admin.lists'));
     }
 
     /**
      * Define what happens when the List operation is loaded.
-     * 
+     *
      * @see  https://backpackforlaravel.com/docs/crud-operation-list-entries
      * @return void
      */
     protected function setupListOperation()
     {
-        CRUD::setFromDb(); // columns
+        //CRUD::setFromDb(); // columns
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');
-         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']); 
+         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']);
          */
+
+        CRUD::addColumn(
+            [
+                'name' => trans('admin.title'),
+                'type' => 'text'
+            ]
+        );
     }
 
     /**
      * Define what happens when the Create operation is loaded.
-     * 
+     *
      * @see https://backpackforlaravel.com/docs/crud-operation-create
      * @return void
      */
@@ -58,18 +65,25 @@ class ListsCrudController extends CrudController
     {
         CRUD::setValidation(ListsRequest::class);
 
-        CRUD::setFromDb(); // fields
-
+        //CRUD::setFromDb(); // fields
         /**
          * Fields can be defined using the fluent syntax or array syntax:
          * - CRUD::field('price')->type('number');
-         * - CRUD::addField(['name' => 'price', 'type' => 'number'])); 
+         * - CRUD::addField(['name' => 'price', 'type' => 'number']));
          */
+
+        CRUD::addField(
+            [
+                'name' => 'name',
+                'label' => trans('admin.title'),
+                'type' => 'text'
+            ]
+        );
     }
 
     /**
      * Define what happens when the Update operation is loaded.
-     * 
+     *
      * @see https://backpackforlaravel.com/docs/crud-operation-update
      * @return void
      */

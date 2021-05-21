@@ -80,7 +80,7 @@ class FlowsController extends CrudController
                     [    // SELECT
                         'label'             => trans('admin.event'),
                         'type'              => 'select',
-                        'name'              => 'event',
+                        'name'              => 'event_type',
                         'entity'            => 'events',
                         'attribute'         => 'name',
                         'model'             => "App\Models\EventTypes",

@@ -28,7 +28,7 @@ class TemplatesController extends CrudController
     {
         CRUD::setModel(\App\Models\Templates::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/templates');
-        CRUD::setEntityNameStrings('templates', 'templates');
+        CRUD::setEntityNameStrings(trans('admin.create_template'), trans('admin.templates'));
     }
 
     /**
@@ -50,7 +50,7 @@ class TemplatesController extends CrudController
         $this->crud->addColumn(
             [
                 'name' => 'name', // The db column name
-                'label' => "Template Name", // Table column heading
+                'label' => trans('admin.title'), // Table column heading
                 'type' => 'text'
             ]
         );
@@ -78,11 +78,19 @@ class TemplatesController extends CrudController
          * - CRUD::addField(['name' => 'price', 'type' => 'number']));
          */
 
-        CRUD::addField('name');
-        CRUD::addField([
-            'name' => 'content',
-            'type' => 'ckeditor'
-        ]);
+        CRUD::addField(
+            [
+                'name' => 'name',
+                'label' => trans('admin.title'),
+            ]
+        );
+        CRUD::addField(
+            [
+                'name' => 'content',
+                'label' => trans('admin.content'),
+                'type' => 'ckeditor'
+            ]
+        );
     }
 
     /**

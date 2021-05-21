@@ -2,10 +2,12 @@
 
 namespace App\Providers;
 
+use App\Models\Customers;
 use App\Models\Events;
 use App\Models\EventTypes;
 use App\Models\Flows;
 use App\Models\Templates;
+use App\Observers\CustomersObserver;
 use App\Observers\EventsObserver;
 use App\Observers\EventTypesObserver;
 use App\Observers\FlowsObserver;
@@ -35,5 +37,6 @@ class AppServiceProvider extends ServiceProvider
         EventTypes::observe(EventTypesObserver::class);
         Flows::observe(FlowsObserver::class);
         Templates::observe(TemplatesObserver::class);
+        Customers::observe(CustomersObserver::class);
     }
 }
