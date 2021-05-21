@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\TemplatesRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class TemplatesController
@@ -29,6 +30,9 @@ class TemplatesController extends CrudController
         CRUD::setModel(\App\Models\Templates::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/templates');
         CRUD::setEntityNameStrings(trans('admin.create_template'), trans('admin.templates'));
+
+        $user = Auth::guard('backpack')->user();
+        $this->crud->addClause('where', 'company_id', '=', $user->id);
     }
 
     /**

@@ -26,11 +26,17 @@ class Flows extends Model
         'extras' => 'array',
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function events()
     {
         return $this->belongsToMany(\App\Models\Events::class, 'flow_event', 'flow_id', 'event_id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function templates()
     {
         return $this->belongsToMany(\App\Models\Templates::class, 'flow_template', 'flow_id', 'template_id');

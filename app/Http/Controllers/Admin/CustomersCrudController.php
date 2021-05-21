@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\CustomersRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class CustomersCrudController
@@ -29,6 +30,9 @@ class CustomersCrudController extends CrudController
         CRUD::setModel(\App\Models\Customers::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/customers');
         CRUD::setEntityNameStrings(trans('admin.create_customer'), trans('admin.customers'));
+
+        $user = Auth::guard('backpack')->user();
+        $this->crud->addClause('where', 'company_id', '=', $user->id);
     }
 
     /**

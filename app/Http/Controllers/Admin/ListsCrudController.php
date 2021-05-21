@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\ListsRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class ListsCrudController
@@ -29,6 +30,9 @@ class ListsCrudController extends CrudController
         CRUD::setModel(\App\Models\Lists::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/lists');
         CRUD::setEntityNameStrings(trans('admin.create_list'), trans('admin.lists'));
+
+        $user = Auth::guard('backpack')->user();
+        $this->crud->addClause('where', 'company_id', '=', $user->id);
     }
 
     /**
@@ -49,7 +53,8 @@ class ListsCrudController extends CrudController
 
         CRUD::addColumn(
             [
-                'name' => trans('admin.title'),
+                'name' => 'name',
+                'label' => trans('admin.title'),
                 'type' => 'text'
             ]
         );
@@ -77,6 +82,14 @@ class ListsCrudController extends CrudController
                 'name' => 'name',
                 'label' => trans('admin.title'),
                 'type' => 'text'
+            ]
+        );
+
+        CRUD::addField(
+            [
+                'name' => 'description',
+                'label' => trans('admin.description'),
+                'type' => 'textarea'
             ]
         );
     }

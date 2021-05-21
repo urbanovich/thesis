@@ -13,6 +13,7 @@ return [
     'create_customer'     => 'Покупателя',
     'customer'     => 'Покупатель',
     'companies'     => 'Компании',
+    'company'     => 'Компания',
     'pages'         => 'Страницы',
     'templates'     => 'Шаблоны',
     'template'      => 'Шаблон',
@@ -28,4 +29,5 @@ return [
     'first_name'         => 'Имя',
     'last_name'         => 'Фамилия',
     'content'         => 'Содержимое',
+    'description'         => 'Описание',
 ];

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\EventTypesRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class EventTypesCrudController
@@ -29,6 +30,9 @@ class EventTypesCrudController extends CrudController
         CRUD::setModel(\App\Models\EventTypes::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/event_types');
         CRUD::setEntityNameStrings(trans('admin.event'), trans('admin.events'));
+
+        $user = Auth::guard('backpack')->user();
+        $this->crud->addClause('where', 'company_id', '=', $user->id);
     }
 
     /**

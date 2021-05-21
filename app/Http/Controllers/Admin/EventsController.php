@@ -12,6 +12,7 @@ use Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
 use Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 use Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class EventsController
@@ -34,6 +35,9 @@ class EventsController extends CrudController
         $this->crud->setModel(Events::class);
         $this->crud->setRoute(config('backpack.base.route_prefix').'/events');
         $this->crud->setEntityNameStrings(trans('admin.event'), trans('admin.events'));
+
+        $user = Auth::guard('backpack')->user();
+        $this->crud->addClause('where', 'company_id', '=', $user->id);
     }
 
     /**

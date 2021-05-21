@@ -35,6 +35,11 @@ class Companies extends Model
     |--------------------------------------------------------------------------
     */
 
+    public function lists()
+    {
+        return $this->belongsToMany(\App\Models\Lists::class, 'company_list', 'list_id', 'company_id');
+    }
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES
