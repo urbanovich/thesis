@@ -18,6 +18,10 @@ use Illuminate\Support\Facades\Route;
     return $request->user();
 });*/
 
-Route::middleware('auth:api')->group(function () {
-    Route::apiResource('/events', 'App\Http\Controllers\Api\EventsController');
-});
+Route::middleware('auth:api')
+    ->namespace('App\Http\Controllers\Api')
+    ->group(
+        function () {
+            Route::apiResource('/events', 'EventsController');
+        }
+    );

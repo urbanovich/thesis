@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\EventsRequest;
 use App\Http\Resources\Event;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 class EventsController extends Controller
 {
@@ -18,23 +20,25 @@ class EventsController extends Controller
     public function index()
     {
 
-        return new Event((object)['test' => 123]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param EventsRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EventsRequest $request)
     {
-        file_put_contents(
-            $_SERVER['DOCUMENT_ROOT'] . '/log.txt',
-            print_r($request->input('data'), true)
-        );
+        $user = Auth::user();
 
-        return new Event((object)['test' => 123]);
+        if ($request->validated()) {
+
+            file_put_contents(
+                $_SERVER['DOCUMENT_ROOT'] . '/log.txt',
+                print_r($request->all(), true)
+            );
+        }
     }
 
     /**
@@ -51,7 +55,7 @@ class EventsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
