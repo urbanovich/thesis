@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Event;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Response;
 
 class EventsController extends Controller
@@ -28,7 +29,12 @@ class EventsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        file_put_contents(
+            $_SERVER['DOCUMENT_ROOT'] . '/log.txt',
+            print_r($request->input('data'), true)
+        );
+
+        return new Event((object)['test' => 123]);
     }
 
     /**

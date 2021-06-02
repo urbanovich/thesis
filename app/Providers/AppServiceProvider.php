@@ -9,6 +9,7 @@ use App\Models\EventTypes;
 use App\Models\Flows;
 use App\Models\Lists;
 use App\Models\Templates;
+use App\Models\User;
 use App\Observers\CompaniesObserver;
 use App\Observers\CustomersObserver;
 use App\Observers\EventsObserver;
@@ -16,6 +17,7 @@ use App\Observers\EventTypesObserver;
 use App\Observers\FlowsObserver;
 use App\Observers\ListsObserver;
 use App\Observers\TemplatesObserver;
+use App\Observers\UserObserver;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -44,5 +46,6 @@ class AppServiceProvider extends ServiceProvider
         Customers::observe(CustomersObserver::class);
         Companies::observe(CompaniesObserver::class);
         Lists::observe(ListsObserver::class);
+        User::observe(UserObserver::class);
     }
 }

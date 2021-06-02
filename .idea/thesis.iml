@@ -126,6 +126,8 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/backpack/langfilemanager" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/backpack/pagemanager" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/backpack/settings" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/laravel/ui" />
+      <excludeFolder url="file://$MODULE_DIR$/public/packages" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
