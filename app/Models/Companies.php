@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class Companies
@@ -48,7 +49,18 @@ class Companies extends Model
 
     public function lists()
     {
-        return $this->belongsToMany(\App\Models\Lists::class, 'company_list', 'list_id', 'company_id');
+        $user = Auth::guard('backpack')->user();
+        /*file_put_contents(
+            $_SERVER['DOCUMENT_ROOT'] . '/log.txt',
+            print_r($user->id, true) .
+            print_r(__FILE__, true)
+        );*/
+        return $this->belongsToMany(
+            Lists::class,
+            'company_list',
+            'company_id',
+            'list_id'
+        );
     }
 
     /*

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class Customers
@@ -48,6 +49,17 @@ class Customers extends Model
     |--------------------------------------------------------------------------
     */
 
+    public function lists()
+    {
+        $user = Auth::guard('backpack')->user();
+
+        return $this->belongsToMany(
+            Lists::class,
+            'customer_list',
+            'customer_id',
+            'list_id'
+        );
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES

@@ -102,6 +102,17 @@ class CompaniesCrudController extends CrudController
                 ],
             ]
         );
+
+        CRUD::addField(
+            [
+                'name' => 'is_activated',
+                'label' => trans('admin.start'),
+                'type' => 'checkbox',
+                'wrapperAttributes' => [
+                    'class' => 'form-group col-md-7'
+                ],
+            ]
+        );
     }
 
     /**

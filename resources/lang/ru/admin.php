@@ -30,4 +30,5 @@ return [
     'last_name'         => 'Фамилия',
     'content'         => 'Содержимое',
     'description'         => 'Описание',
+    'start'         => 'Начать',
 ];

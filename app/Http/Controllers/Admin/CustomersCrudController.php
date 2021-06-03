@@ -113,6 +113,20 @@ class CustomersCrudController extends CrudController
                 'type' => 'text'
             ]
         );
+
+        CRUD::addField(
+            [    // SELECT
+                'label'             => trans('admin.list'),
+                'type'              => 'select2_multiple',
+                'name'              => 'lists',
+                'entity'            => 'lists',
+                'attribute'         => 'name',
+                'model'             => "App\Models\Lists",
+                'wrapperAttributes' => [
+                    'class' => 'form-group col-md-12'
+                ],
+            ]
+        );
     }
 
     /**
