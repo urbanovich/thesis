@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\EventsRequest;
 use App\Http\Resources\Event;
+use App\Models\Customers;
+use App\Models\Events;
+use App\Models\EventTypes;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Response;
@@ -34,17 +37,30 @@ class EventsController extends Controller
 
         if ($request->validated()) {
 
-            file_put_contents(
-                $_SERVER['DOCUMENT_ROOT'] . '/log.txt',
-                print_r($request->all(), true)
-            );
+            $email = $request->customer_properties['email'] ?? false;
+            $firstName = $request->customer_properties['first_name'] ?? false;
+            $lastName = $request->customer_properties['last_name'] ?? false;
+            /**
+             * @var Customers $customer
+             */
+            $customer = Customers::firstOrCreate(['email' => $email]);
+            $customer->first_name = $customer->first_name ? $customer->first_name : $firstName;
+            $customer->last_name = $customer->last_name ? $customer->last_name : $lastName;
+            $customer->save();
+            $eventType = EventTypes::firstOrCreate(['name' => $request->event]);
+            $event = new Events();
+            $event->name = $request->event;
+            $event->event_type_id = $eventType->id;
+            $event->customer_id = $customer->id;
+            $event->data = json_encode($request->properties);
+            $event->save();
         }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -56,7 +72,7 @@ class EventsController extends Controller
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -67,7 +83,7 @@ class EventsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

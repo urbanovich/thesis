@@ -15,9 +15,13 @@ class EventTypesObserver
      */
     public function creating(EventTypes $eventTypes)
     {
-        $user = Auth::guard('backpack')->user();
+        if ($user = Auth::user()) {
+            $eventTypes->company_id = $user->id;
+        }
 
-        $eventTypes->company_id = $user->id;
+        if ($user = Auth::guard('backpack')->user()) {
+            $eventTypes->company_id = $user->id;
+        }
     }
 
     /**

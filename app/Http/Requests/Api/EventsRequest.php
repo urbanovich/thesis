@@ -4,6 +4,14 @@ namespace App\Http\Requests\Api;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * Class EventsRequest
+ * @package App\Http\Requests\Api
+ *
+ * @property $event
+ * @property $customer_properties
+ * @property $properties
+ */
 class EventsRequest extends FormRequest
 {
     /**
@@ -26,8 +34,8 @@ class EventsRequest extends FormRequest
     {
         return [
             'event' => 'required|string|min:5',
-            'customer_properties' => 'required|json',
-            'properties' => 'required|json',
+            'customer_properties' => 'required',
+            'properties' => 'required',
         ];
     }
 

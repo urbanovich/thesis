@@ -26,7 +26,7 @@ Route::group([
     // -----
     // CRUDs
     // -----
-//    Route::crud('events', 'EventsController');
+    Route::crud('events', 'EventsController');
     Route::crud('flows', 'FlowsController');
     Route::crud('templates', 'TemplatesController');
     Route::crud('lists', 'ListsCrudController');

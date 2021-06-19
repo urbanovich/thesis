@@ -15,9 +15,13 @@ class CompaniesObserver
      */
     public function creating(Companies $companies)
     {
-        $user = Auth::guard('backpack')->user();
+        if ($user = Auth::user()) {
+            $companies->company_id = $user->id;
+        }
 
-        $companies->company_id = $user->id;
+        if ($user = Auth::guard('backpack')->user()) {
+            $companies->company_id = $user->id;
+        }
     }
 
     /**

@@ -21,9 +21,9 @@ use Illuminate\Support\Facades\Auth;
 class EventsController extends CrudController
 {
     use ListOperation;
-    use CreateOperation;
-    use UpdateOperation;
-    use DeleteOperation;
+    //use CreateOperation;
+    //use UpdateOperation;
+    //use DeleteOperation;
     use ShowOperation;
     use FetchOperation;
 
@@ -33,7 +33,7 @@ class EventsController extends CrudController
     public function setup()
     {
         $this->crud->setModel(Events::class);
-        $this->crud->setRoute(config('backpack.base.route_prefix').'/events');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/events');
         $this->crud->setEntityNameStrings(trans('admin.event'), trans('admin.events'));
 
         $user = Auth::guard('backpack')->user();
@@ -51,6 +51,28 @@ class EventsController extends CrudController
             'type' => 'text'
         ]);
 
+        $this->crud->addColumn([
+            // show both text and email values in one column
+            // this column is here to demo and test the custom searchLogic functionality
+            'name'          => 'model_function',
+            'label'         => trans('admin.customer'), // Table column heading
+            'type'          => 'model_function',
+            'function_name' => 'getCustomerFullName', // the method in your Model
+            'wrapper'   => [
+                'href' => function ($crud, $column, $entry, $related_key) {
+                    return backpack_url('customers/'.$entry->customer_id.'/show');
+                },
+            ],
+        ]);
+
+        $this->crud->addColumn([   // DateTime
+            'name'              => 'created_at',
+            'label'             => trans('admin.time'),
+            'type'              => 'datetime',
+            'wrapperAttributes' => ['class' => 'form-group col-md-6'],
+            //'tab'               => 'Time and space',
+        ]);
+
         $this->crud->enableExportButtons();
     }
 
@@ -62,11 +84,33 @@ class EventsController extends CrudController
         CRUD::addField([
             'name' => 'name',
             'label' => trans('admin.title'),
-       ]);
+        ]);
+
+        CRUD::addField(
+            [   // 1-n relationship
+                'label'     => trans('admin.customer'), // Table column heading
+                'type'      => 'select2',
+                'name'      => 'customer_id', // the column that contains the ID of that connected entity;
+                'entity'    => 'customer', // the method that defines the relationship in your Model
+                'attribute' => 'email', // foreign key attribute that is shown to user
+                'model'     => "App\Models\Customers", // foreign key model
+                /*'wrapper'   => [
+                    'href' => function ($crud, $column, $entry, $related_key) {
+                        return backpack_url('customers/'.$related_key.'/show');
+                    },
+                ],*/
+            ]
+        );
     }
 
     protected function setupUpdateOperation()
     {
         $this->setupCreateOperation();
+    }
+
+    protected function setupShowOperation()
+    {
+        $this->setupListOperation();
+        $this->crud->setOperationSetting('contentClass', 'col-md-12');
     }
 }

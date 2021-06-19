@@ -12,6 +12,9 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property int $id
  * @property int $company_id
+ * @property int $event_type_id
+ * @property int $customer_id
+ * @property Customers $customer
  * @property string $name
  * @property json $data
  * @property string $created_at
@@ -31,4 +34,14 @@ class Events extends Model
      * @var string[]
      */
     protected $fillable = ['name', 'data'];
+
+    public function customer()
+    {
+        return $this->belongsTo(Customers::class, 'customer_id');
+    }
+
+    public function getCustomerFullName()
+    {
+        return $this->customer->first_name . ' ' . $this->customer->last_name;
+    }
 }
