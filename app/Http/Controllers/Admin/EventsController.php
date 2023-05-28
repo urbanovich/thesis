@@ -73,6 +73,14 @@ class EventsController extends CrudController
             //'tab'               => 'Time and space',
         ]);
 
+        $this->crud->addColumn([   // DateTime
+            'name'              => 'data',
+            'label'             => trans('admin.data'),
+            'type'              => 'text',
+            'wrapperAttributes' => ['class' => 'form-group col-md-6'],
+            //'tab'               => 'Time and space',
+        ]);
+
         $this->crud->enableExportButtons();
     }
 

@@ -51,6 +51,7 @@ class EventsController extends Controller
             $event = new Events();
             $event->name = $request->event;
             $event->event_type_id = $eventType->id;
+            $event->company_id = $customer->company_id;
             $event->customer_id = $customer->id;
             $event->data = json_encode($request->properties);
             $event->save();
